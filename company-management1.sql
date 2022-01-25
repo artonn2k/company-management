@@ -3,7 +3,7 @@ insert into regions(region_id,region_name) values (2,'Balkan');
 insert into regions(region_id,region_name) values (3,'Asia');
 insert into regions(region_id,region_name) values (4,'America');
 
-select * from regions
+select * from regions;
 
 insert into countries(country_id,country_name,region_id) values ('CH','Switzerland',1);
 insert into countries(country_id,country_name,region_id) values ('BE','Belgium',1);
@@ -32,7 +32,7 @@ insert into countries(country_id,country_name,region_id) values ('CA','Canada',4
 insert into countries(country_id,country_name,region_id) values ('MX','Mexico',4);
 insert into countries(country_id,country_name,region_id) values ('US','United States of America',4);
 
-select * from countries
+select * from countries;
 
 insert into locations(location_id,street_address,postal_code,city,state_province,country_id) values (1400,'2014 Jabberwocky Rd','26192','Southlake','Texas','US');
 insert into locations(location_id,street_address,postal_code,city,state_province,country_id) values (1500,'2011 Interiors Blvd','99236','South San Francisco','California','US');
@@ -41,7 +41,7 @@ insert into locations(location_id,street_address,postal_code,city,state_province
 insert into locations(location_id,street_address,postal_code,city,state_province,country_id) values (2700,'Schwanthalerstr. 7031','80925','Munich','Bavaria','DE');
 insert into locations(location_id,street_address,postal_code,city,state_province,country_id) values (2800,'Montessoristraße','90471','Nurnberg','Bavaria','DE');
 
-select * from locations
+select * from locations;
 
 insert into jobs(job_id,job_title,min_salary,max_salary) values (1,'Public Accountant',4200.00,9000.00);
 insert into jobs(job_id,job_title,min_salary,max_salary) values (2,'Accounting Manager',8200.00,16000.00);
@@ -55,7 +55,7 @@ insert into jobs(job_id,job_title,min_salary,max_salary) values (9,'Sales Manage
 insert into jobs(job_id,job_title,min_salary,max_salary) values (10,'Sales Representative',6000.00,12000.00);
 insert into jobs(job_id,job_title,min_salary,max_salary) values (11,'Stock Manager',5500.00,8500.00);
 
-select * from jobs
+select * from jobs;
 	
 
 insert into departments(department_id,department_name,location_id) values (1,'Administration',1700);
@@ -67,7 +67,7 @@ insert into departments(department_id,department_name,location_id) values (6,'Sa
 insert into departments(department_id,department_name,location_id) values (7,'Finance',2700);
 insert into departments(department_id,department_name,location_id) values (8,'Accounting',1700);
 
-select * from departments
+select * from departments;
 
 insert into employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,manager_id,department_id) values (100,'Steven','King','steven@gmail.com','515.123.4567','2000-06-17',1,24000.00,NULL,5);
 insert into employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,manager_id,department_id) values (101,'Neena','Kochhar','neena@hotmail.com','515.123.4568','1999-09-21',2,17000.00,100,5);
@@ -87,7 +87,7 @@ insert into employees(employee_id,first_name,last_name,email,phone_number,hire_d
 insert into employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,manager_id,department_id) values (115,'Alexander','Khoo','alexander@yahoo.com','515.127.4562','1995-05-18',11,3100.00,114,7);
 insert into employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,manager_id,department_id) values (116,'Shelli','Baida','shelli@sgmail.com','515.127.4563','2015-12-24',5,2900.00,114,8);
 
-select * from employees
+select * from employees;
 
 insert into dependents(dependent_id,first_name,last_name,relationship,employee_id) values (1,'Jennifer','King','Child',100);
 insert into dependents(dependent_id,first_name,last_name,relationship,employee_id) values (2,'Johnny','Kochhar','Child',101);
@@ -98,7 +98,15 @@ insert into dependents(dependent_id,first_name,last_name,relationship,employee_i
 insert into dependents(dependent_id,first_name,last_name,relationship,employee_id) values (7,'Christian','Urman','Child',112);
 insert into dependents(dependent_id,first_name,last_name,relationship,employee_id) values (8,'Elvis','Khoo','Child',115);
 
-select * from dependents
+select * from dependents;
+
+select country_id, count(location_id)numrimi
+from locationsemployees;
+
+select * from employees 
+where manager_id=108;
+
+
 
 /* ------------------------------------------querys -----------------------------------*/
 -- 1.me kete query kthejm id e puntorit bashk me emrin,mbiemrin, diten kur ka filluar punen edhe rrogen
@@ -176,18 +184,6 @@ select employee_id, first_name, last_name, department_id
 from employees
 where department_id in (3, 6)
 order by department_id;
-
--- duke perdour inner join ne kemi kthyer vetem puntoret qe punojne ne departamentin me id 4 dhe 5
-select first_name, last_name, employees.department_id, departments.department_id, department_name
-from employees
-inner join departments on departments.department_id = employees.department_id
-where employees.department_id in(4, 5);
-
--- 11. left join 
-SELECT c.country_name, c.country_id, l.country_id, l.street_address, l.city
-FROM countries c
-LEFT JOIN locations l ON l.country_id = c.country_id
-WHERE c.country_id IN ('US', 'DE');
     
 -- 12. count dhe group by
 
