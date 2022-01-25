@@ -107,6 +107,13 @@ select * from employees
 where manager_id=108;
 
 
+-- kthejm vetem qytetet qe bejne pjese ne gjermani
+select countries.country_name, countries.country_id, locations.country_id, locations.city
+from countries 
+inner join locations on locations.country_id = countries.country_id
+where countries.country_id in ('DE');
+
+-- cili regjion ka me shume kontinente?? nuk ka mund me e zgjidh
 
 /* ------------------------------------------querys -----------------------------------*/
 -- 1.me kete query kthejm id e puntorit bashk me emrin,mbiemrin, diten kur ka filluar punen edhe rrogen
